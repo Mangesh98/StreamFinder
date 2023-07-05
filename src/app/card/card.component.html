@@ -1,11 +1,51 @@
+<!-- <div class="card">
+  <div class="imgParent text-center">
+    <img
+      src="https://m.media-amazon.com/images/M/MV5BOTAwNjI3NzczMl5BMl5BanBnXkFtZTcwOTAwMzcxMw@@._V1_UY268_CR2,0,182,268_AL_.jpg"
+      class="card-img-top"
+      alt="Movie Poster"
+    />
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Endgame 2050</h5>
+    <p class="card-text">Released: 2020</p>
+    <p class="card-text">Genre: Documentary</p>
+    <p class="card-text">
+      Synopsis: What will the future be like in the year 2050? Endgame 2050 is a
+      feature-length documentary that gives us a glimpse into that future, and
+      it does not look good. Featuring musician Moby...
+    </p>
+    <a href="https://www.imdb.com/title/tt12292428" class="btn btn-primary"
+      >IMDb</a
+    >
+  </div>
+</div> -->
 
 <div class="card mb-4">
-  <img [src]="movie.imageurl && movie.imageurl[0]" class="card-img-top" alt="Movie Poster" (error)="onImageError($event)"/>
+  <div class="imgParent text-center">
+    <img
+      [src]="movie.imageurl && movie.imageurl[0]"
+      class="card-img-top"
+      alt="Movie Poster"
+      (error)="onImageError($event)"
+    />
+  </div>
   <div class="card-body text-secondary-color">
     <h5 class="card-title">{{ movie.title }}</h5>
     <p class="card-text">Released: {{ movie.released }}</p>
-    <p class="card-text">Genre: {{ movie.genre ? movie.genre.join(", ") : '' }}</p>
+    <p class="card-text">
+      Genre: {{ movie.genre ? movie.genre.join(", ") : "" }}
+    </p>
     <p class="card-text">{{ movie.synopsis }}</p>
-    <a [href]="'https://www.imdb.com/title/' + movie.imdbid" class="btn btn-primary">IMDb</a>
+    <button class="btn btn-primary-color" (click)="toggleStreamingDetails()">Streaming Details ↓</button>
+
+    <div *ngIf="showStreamingDetails">
+      <div *ngFor="let stream of streamingData">
+        <a class="text-active" [href]="stream.url">{{ stream.platform }}</a>
+      </div>
+      <ng-template #noStreamingData>
+        <p>Not available on any service.</p>
+      </ng-template>
+    </div>
   </div>
 </div>

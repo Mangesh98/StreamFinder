@@ -14,9 +14,18 @@ export class AppComponent {
   constructor(private apiService: ApiService) {}
 
   searchMovies() {
+      if (!this.searchQuery || this.searchQuery.trim() === '') {
+        return;
+      }
     this.apiService.advancedSearch(this.searchQuery).subscribe(
       (response) => {
-        this.movies = response.results;
+        // this.movies = response.results;
+        
+        
+        this.movies = response.results.filter(
+          (movie: any) => movie.imageurl && movie.imageurl.length > 0
+        );
+        console.log(this.movies);
       },
       (error) => {
         console.error('API Error:', error);
