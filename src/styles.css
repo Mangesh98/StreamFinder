@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+  --background: #000000;
+  --primary: #FFFFFF;
+  --secondary: #9E9E9E;
+  --active: #F40812;
+  --light: #121212;
+}
+.text-active {
+    --tw-text-opacity: 1;
+    color: rgb(244 8 18/var(--tw-text-opacity)) !important;
+}
+.text-primary-color {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255/var(--tw-text-opacity)) !important;
+}
+.btn-primary-color {
+    --tw-text-opacity: 1;
+    background-color: var(--active) !important;
+    color: var(--primary) !important;
+}
+.bg-background{
+    background-color: var(--background);
+}
+button{
+    margin-left: 0.7rem !important;
+}
+.text-secondary-color {
+    --tw-text-opacity: 1;
+    color: rgb(158 158 158/var(--tw-text-opacity)) !important;
+}

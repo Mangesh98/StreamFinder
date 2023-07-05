@@ -1,0 +1,11 @@
+
+<div class="card mb-4">
+  <img [src]="movie.imageurl && movie.imageurl[0]" class="card-img-top" alt="Movie Poster" (error)="onImageError($event)"/>
+  <div class="card-body text-secondary-color">
+    <h5 class="card-title">{{ movie.title }}</h5>
+    <p class="card-text">Released: {{ movie.released }}</p>
+    <p class="card-text">Genre: {{ movie.genre ? movie.genre.join(", ") : '' }}</p>
+    <p class="card-text">{{ movie.synopsis }}</p>
+    <a [href]="'https://www.imdb.com/title/' + movie.imdbid" class="btn btn-primary">IMDb</a>
+  </div>
+</div>
